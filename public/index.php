@@ -250,42 +250,99 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="section fade-in text-center">
-    <div class="container">
-      <h2 class="mb-4 fw-bold text-primary">ผลงานของฉัน</h2>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card project-card">
-            <img src="gameitem.jpg" alt="Project 1">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Ragna Shop</h5>
-              <p class="text-muted">เว็บไซต์ขายไอเท็มในเกม</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="card project-card">
-            <img src="Portfolio.png" alt="Project 2">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Portfolio Website</h5>
-              <p class="text-muted">ออกแบบเว็บไซต์ Portfolio ส่วนตัว</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="card project-card">
-            <img src="capcut.jpg" alt="Project 3">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">CapCut Projects</h5>
-              <p class="text-muted">ตัดต่อวิดีโอสร้างสรรค์ด้วย CapCut</p>
-            </div>
+<section id="projects" class="section fade-in text-center">
+  <div class="container">
+    <h2 class="mb-4 fw-bold text-primary">ผลงานของฉัน</h2>
+    <div class="row">
+      
+      <!-- Project 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm">
+          <img src="gameitem.jpg" alt="Project 1">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Ragna Shop</h5>
+            <p class="text-muted">เว็บไซต์ขายไอเท็มในเกม</p>
+            <a href="ragna-shop.php" class="btn btn-outline-primary btn-sm" target="_blank">
+              <i class="fa-solid fa-eye me-1"></i> ดูรายละเอียด
+            </a>
           </div>
         </div>
       </div>
+
+      <!-- Project 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm">
+          <img src="Portfolio.png" alt="Project 2">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Portfolio Website</h5>
+            <p class="text-muted">ออกแบบเว็บไซต์ Portfolio ส่วนตัว</p>
+            <a href="portfolio-detail.php" class="btn btn-outline-primary btn-sm" target="_blank">
+              <i class="fa-solid fa-eye me-1"></i> ดูรายละเอียด
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm">
+          <img src="capcut.jpg" alt="Project 3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">CapCut Projects</h5>
+            <p class="text-muted">ตัดต่อวิดีโอสร้างสรรค์ด้วย CapCut</p>
+            <a href="capcut-project.php" class="btn btn-outline-primary btn-sm" target="_blank">
+              <i class="fa-solid fa-eye me-1"></i> ดูรายละเอียด
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm">
+          <img src="blog.jpg" alt="Project 4">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Personal Blog</h5>
+            <p class="text-muted">บล็อกส่วนตัวสำหรับแบ่งปันบทความเทคโนโลยี</p>
+            <a href="personal-blog.php" class="btn btn-outline-primary btn-sm" target="_blank">
+              <i class="fa-solid fa-eye me-1"></i> ดูรายละเอียด
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm">
+          <img src="ecommerce.jpg" alt="Project 5">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">E-Commerce Website</h5>
+            <p class="text-muted">เว็บไซต์ร้านค้าออนไลน์พร้อมระบบตะกร้าสินค้า</p>
+            <a href="ecommerce.php" class="btn btn-outline-primary btn-sm" target="_blank">
+              <i class="fa-solid fa-eye me-1"></i> ดูรายละเอียด
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm">
+          <img src="dashboard.jpg" alt="Project 6">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Admin Dashboard</h5>
+            <p class="text-muted">ระบบจัดการข้อมูลหลังบ้านด้วย PHP + MySQL</p>
+            <a href="admin-dashboard.php" class="btn btn-outline-primary btn-sm" target="_blank">
+              <i class="fa-solid fa-eye me-1"></i> ดูรายละเอียด
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Contact Section -->
   <section id="contact" class="section bg-light fade-in">
