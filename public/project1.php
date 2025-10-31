@@ -147,6 +147,11 @@
             color: var(--text-color);
             transition: color 0.3s;
         }
+        /* เพิ่มสำหรับรายการย่อยใน Challenges & Learning */
+        .feature-list li.small {
+            font-size: 1rem; /* ปรับขนาดฟอนต์ให้เล็กลงเล็กน้อย */
+        }
+
 
         .feature-list li i {
             color: var(--accent-color);
@@ -181,13 +186,36 @@
             color: var(--text-muted-color) !important;
         }
         body.dark-mode .text-secondary {
-             color: var(--text-muted-color) !important;
+            color: var(--text-muted-color) !important;
         }
         body.dark-mode h3 {
-             color: var(--text-color) !important; /* ให้หัวข้อเป็นสีข้อความหลัก */
+            color: var(--text-color) !important; /* ให้หัวข้อเป็นสีข้อความหลัก */
         }
-
-
+        
+        /* Styling for the Dark Mode Toggle Button */
+        #theme-toggle {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color var(--transition-speed), color var(--transition-speed), transform 0.2s ease;
+        }
+        #theme-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        body.dark-mode #theme-toggle {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        body.dark-mode #theme-toggle:hover {
+            background-color: lighten(var(--accent-color), 10%); /* อาจจะต้องปรับค่านี้ถ้าใช้ Sass/Less */
+            transform: scale(1.05);
+        }
+        
         /* Responsive adjustment for image */
         @media (max-width: 768px) {
             .project-detail-card {
@@ -198,6 +226,9 @@
 </head>
 
 <body>
+    <button id="theme-toggle" class="btn position-fixed top-0 end-0 mt-3 me-3 z-100" style="z-index: 1000; border-radius: 50%; width: 45px; height: 45px; padding: 0; font-size: 1.2rem;">
+        <i class="fas fa-sun" id="theme-icon"></i>
+    </button>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -250,23 +281,40 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <hr class="my-5">
 
-                    <div class="text-center mb-5">
-                        <h3 class="tech-title">🔗 ลิงก์ที่เกี่ยวข้อง</h3>
-                        <a href="#" class="btn btn-outline-primary me-3" target="_blank" disabled>
-                            <i class="fas fa-external-link-alt"></i> ดูตัวอย่าง (ถ้ามี)
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary" target="_blank">
-                            <i class="fab fa-github"></i> Repository (ถ้ามี)
-                        </a>
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <h3 class="tech-title">🚧 ความท้าทายและการแก้ไข</h3>
+                            <ul class="feature-list">
+                                <li class="small"><i class="fas fa-exclamation-triangle"></i> **การจัดการสต็อก:** แก้ไขปัญหาการลดสต็อกที่ไม่ถูกต้องเมื่อเกิดการซื้อพร้อมกัน โดยใช้ **Transaction** ใน MySQL เพื่อรับประกันความสมบูรณ์ของข้อมูล</li>
+                                <li class="small"><i class="fas fa-shield-alt"></i> **ความปลอดภัย:** ป้องกันการโจมตี SQL Injection โดยใช้ **Prepared Statements** ใน PHP แทนการต่อ String โดยตรง</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="tech-title">📚 สิ่งที่ได้เรียนรู้เพิ่มเติม</h3>
+                            <ul class="feature-list">
+                                <li class="small"><i class="fas fa-database"></i> การออกแบบ **Database Schema** สำหรับ E-commerce (Users, Products, Orders, Order_Details)</li>
+                                <li class="small"><i class="fas fa-code-branch"></i> การจัดระเบียบโค้ด PHP (Separation of Concerns) ให้ง่ายต่อการดูแลรักษาในโปรเจกต์ขนาดเล็ก</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="text-center mt-4">
-                        <a href="index.php#projects" class="btn btn-back">
-                            <i class="fas fa-arrow-left"></i> กลับสู่หน้า Portfolio
+                    <div class="text-center mt-5 d-flex justify-content-center gap-3">
+                        
+                        <a href="#" target="_blank" class="btn btn-success btn-lg" style="border-radius: 25px; font-weight: 600;">
+                            <i class="fas fa-globe"></i> ดู Live Demo
                         </a>
-                    </div>
 
+                        <a href="https://github.com/Asadawut21/GGWP.git" target="_blank" class="btn btn-dark btn-lg" style="border-radius: 25px; font-weight: 600;">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+
+                        <a href="index.php#projects" class="btn btn-back btn-lg">
+                            <i class="fas fa-arrow-left"></i> กลับสู่ Portfolio
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -274,16 +322,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // --- JavaScript สำหรับ Dark Mode (คัดลอกจากหน้าหลักมา) ---
-        
-        // ตรวจสอบและใช้ธีมที่บันทึกไว้ใน localStorage
+        // --- JavaScript สำหรับ Dark Mode (ปรับปรุง) ---
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
             const savedTheme = localStorage.getItem('theme');
-            
-            // ถ้ามีการบันทึก theme เป็น 'dark' ให้เปิด Dark Mode ทันที
+
+            // 1. ฟังก์ชันสลับธีม
+            function toggleTheme(isDark) {
+                if (isDark) {
+                    body.classList.add('dark-mode');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            // 2. ใช้ธีมที่บันทึกไว้
             if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
+                toggleTheme(true);
+            } else {
+                // กำหนดสถานะเริ่มต้นของ Icon หากไม่ได้มีการบันทึกไว้เป็น dark (เป็น light)
+                toggleTheme(false); 
+            }
+
+            // 3. เพิ่ม Event Listener ให้ปุ่ม
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    // ตรวจสอบสถานะปัจจุบันของ body
+                    const isDark = body.classList.contains('dark-mode');
+                    toggleTheme(!isDark); // สลับเป็นตรงข้าม
+                });
             }
         });
         

@@ -1,5 +1,6 @@
 <?php
 // หน้าแสดงรายละเอียดผลงาน Portfolio Website
+// เปลี่ยนชื่อไฟล์นี้เป็น portfolio_detail.php หรือตามที่คุณใช้
 ?>
 <!DOCTYPE html>
 <html lang="th">
@@ -45,7 +46,6 @@
         /* ================================================= */
         body {
             font-family: 'Prompt', sans-serif;
-            /* ใช้ตัวแปร */
             background-color: var(--bg-light);
             color: var(--text-color);
             padding-top: 60px;
@@ -55,7 +55,6 @@
 
         /* Card/Section Styling */
         .project-detail-card {
-            /* ใช้ตัวแปร */
             background-color: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -63,23 +62,18 @@
             margin-top: 30px;
             transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
         }
-
-        /* Dark Mode: แก้ไขเงา Card */
         body.dark-mode .project-detail-card {
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
         }
 
         /* Header Styling */
         .project-header h2 {
-            /* ใช้ตัวแปร */
             color: var(--primary-color);
             font-weight: 700;
             border-bottom: 3px solid var(--accent-color);
             padding-bottom: 10px;
             display: inline-block;
         }
-
-        /* Dark Mode: Header สีอ่อนลง */
         body.dark-mode .project-header h2 {
             color: var(--accent-color);
         }
@@ -87,15 +81,11 @@
         /* Image Styling */
         .project-image {
             border-radius: 10px;
-            /* ใช้ตัวแปร */
-            border: 5px solid var(--border-color); /* ใช้ border-color แทน #dee2e6 */
+            border: 5px solid var(--border-color);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
-
-        /* Dark Mode: ปรับความสว่างรูปภาพ */
         body.dark-mode .project-image {
-            /* รูปภาพ Portfolio.png อาจสว่างอยู่แล้ว ให้ลดความสว่างลงเล็กน้อย */
             filter: brightness(0.9) contrast(0.98);
             border-color: rgba(255, 255, 255, 0.2);
             box-shadow: 0 6px 12px rgba(255, 255, 255, 0.08);
@@ -104,7 +94,6 @@
         /* Technology Tags */
         .tech-tag {
             display: inline-block;
-            /* ใช้ primary-color ตามหน้าหลัก */
             background-color: var(--primary-color);
             color: white;
             padding: 5px 15px;
@@ -116,18 +105,15 @@
             transition: background-color 0.3s;
         }
         .tech-tag:hover {
-            background-color: var(--secondary-color); /* ใช้ secondary-color แทน #0056b3 */
+            background-color: var(--secondary-color);
         }
 
         .tech-title {
-            /* ใช้ตัวแปร */
             color: var(--text-color);
             font-weight: 600;
             margin-bottom: 15px;
             transition: color 0.3s;
         }
-
-        /* Dark Mode: Tech Title ใช้สี accent-color */
         body.dark-mode .tech-title {
             color: var(--accent-color);
         }
@@ -141,9 +127,12 @@
         .feature-list li {
             margin-bottom: 12px;
             font-size: 1.05rem;
-            /* ใช้ตัวแปร */
             color: var(--text-color);
             transition: color 0.3s;
+        }
+        /* เพิ่มสำหรับรายการย่อยใน Challenges & Learning */
+        .feature-list li.small {
+            font-size: 1rem;
         }
         .feature-list li i {
             color: var(--accent-color);
@@ -151,9 +140,24 @@
             font-size: 1.1em;
         }
 
-        /* Back Button Styling */
+        /* Button Styling (รวมปุ่มทั้งหมด) */
+        .btn-link-demo {
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+        .btn-link-github {
+            background-color: #333333; /* Dark Grey */
+            color: white;
+        }
+        .btn-link-demo:hover {
+            background-color: #218838;
+            color: white;
+        }
+        .btn-link-github:hover {
+            background-color: #555555;
+            color: white;
+        }
         .btn-back {
-            /* ใช้ primary-color/secondary-color ตามหน้าหลัก */
             background-color: var(--secondary-color);
             color: white;
             border-radius: 25px;
@@ -175,13 +179,35 @@
             color: var(--text-muted-color) !important;
         }
         body.dark-mode h3 {
-             /* ปรับสีหัวข้อรองให้ใช้สี accent */
-             color: var(--accent-color) !important;
+            color: var(--accent-color) !important; /* ปรับสีหัวข้อรองให้ใช้สี accent */
         }
-
+        
+        /* Styling for the Dark Mode Toggle Button */
+        #theme-toggle {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color var(--transition-speed), color var(--transition-speed), transform 0.2s ease;
+        }
+        #theme-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        body.dark-mode #theme-toggle {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
+
+    <button id="theme-toggle" class="btn position-fixed top-0 end-0 mt-3 me-3 z-100" style="z-index: 1000; border-radius: 50%; width: 45px; height: 45px; padding: 0; font-size: 1.2rem;">
+        <i class="fas fa-sun" id="theme-icon"></i>
+    </button>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -205,11 +231,11 @@
                                 <span class="tech-tag">Bootstrap 5</span>
                                 <span class="tech-tag">PHP (สำหรับฟอร์มติดต่อ)</span>
                                 <span class="tech-tag">Responsive Design</span>
-                            </div>
+                                <span class="tech-tag">Vanilla JavaScript</span> </div>
 
                             <h4 class="tech-title"><i class="fas fa-lightbulb me-2"></i> วัตถุประสงค์</h4>
                             <p class="text-secondary">
-                                เว็บไซต์นี้ถูกสร้างขึ้นเพื่อเป็นศูนย์รวมข้อมูลส่วนตัว, ทักษะ, และผลงานทั้งหมด เพื่อนำเสนอความสามารถและติดต่อกับผู้ที่สนใจจ้างงานหรือร่วมงานได้อย่างมืออาชีพ
+                                เว็บไซต์นี้ถูกสร้างขึ้นเพื่อเป็นศูนย์รวมข้อมูลส่วนตัว, ทักษะ, และผลงานทั้งหมด เพื่อนำเสนอความสามารถและติดต่อกับผู้ที่สนใจจ้างงานหรือร่วมงานได้อย่างมืออาชีพ **โดยเน้นที่การออกแบบ UI/UX ที่ทันสมัยและรองรับการใช้งานทุกอุปกรณ์**
                             </p>
                         </div>
                     </div>
@@ -222,34 +248,50 @@
                                     <ul class="feature-list">
                                         <li><i class="fas fa-user-tie"></i> **ส่วนแนะนำตัว:** ข้อมูลส่วนบุคคลและประสบการณ์</li>
                                         <li><i class="fas fa-graduation-cap"></i> **ส่วนการศึกษา:** ประวัติการศึกษาที่เกี่ยวข้อง</li>
-                                        <li><i class="fas fa-code"></i> **ส่วนทักษะ:** แสดงทักษะด้านภาษาและเครื่องมือที่เชี่ยวชาญ</li>
-                                    </ul>
+                                        <li><i class="fas fa-code"></i> **ส่วนทักษะ:** แสดงทักษะด้านภาษาและเครื่องมือที่เชี่ยวชาญ (พร้อมแถบ Progress Bar)</li> </ul>
                                 </div>
                                 <div class="col-md-6">
                                     <ul class="feature-list">
                                         <li><i class="fas fa-project-diagram"></i> **ส่วนผลงาน:** แสดง Project ที่เคยทำ (ลิงก์ไปยังหน้านี้)</li>
-                                        <li><i class="fas fa-mobile-alt"></i> **Responsive Design:** รองรับการแสดงผลทุกอุปกรณ์</li>
-                                        <li><i class="fas fa-paper-plane"></i> **แบบฟอร์มติดต่อ:** ใช้ PHP ในการประมวลผลการส่งอีเมล</li>
+                                        <li><i class="fas fa-mobile-alt"></i> **Responsive Design:** รองรับการแสดงผลทุกอุปกรณ์ (Mobile First Approach)</li> <li><i class="fas fa-paper-plane"></i> **แบบฟอร์มติดต่อ:** ใช้ PHP ในการประมวลผลการส่งอีเมล (Mailer)</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="text-center mb-5">
-                        <h3 class="tech-title"><i class="fas fa-link me-2"></i> ลิงก์ที่เกี่ยวข้อง</h3>
-                        <a href="index.php" class="btn btn-outline-primary me-3" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> เข้าชมเว็บไซต์จริง
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary" target="_blank" disabled>
-                            <i class="fab fa-github"></i> Repository (ถ้ามี)
-                        </a>
-                    </div>
+                    <hr class="my-5">
 
-                    <div class="text-center mt-4">
-                        <a href="index.php#projects" class="btn btn-back">
-                            <i class="fas fa-arrow-left"></i> กลับสู่หน้า Portfolio
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <h3 class="tech-title">🚧 ความท้าทายและการแก้ไข</h3>
+                            <ul class="feature-list">
+                                <li class="small"><i class="fas fa-magic"></i> **Dark Mode Implementation:** จัดการการสลับธีมโดยใช้ **CSS Variables** เพื่อให้ง่ายต่อการดูแลและสลับสีอย่างรวดเร็ว (ไม่ต้องโหลด stylesheet ใหม่)</li>
+                                <li class="small"><i class="fas fa-check-double"></i> **Form Validation:** ตรวจสอบความถูกต้องของข้อมูล (Input Validation) ในฟอร์มติดต่อทั้งฝั่ง **Client-Side (JS)** และ **Server-Side (PHP)** เพื่อป้องกันการส่งข้อมูลที่ว่างเปล่า</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="tech-title">📚 สิ่งที่ได้เรียนรู้เพิ่มเติม</h3>
+                            <ul class="feature-list">
+                                <li class="small"><i class="fas fa-palette"></i> การเลือกใช้ **Color Palette** และ **Typography (Prompt)** ที่เหมาะสมกับ Mood & Tone ของการนำเสนอบุคลิก</li>
+                                <li class="small"><i class="fas fa-server"></i> การตั้งค่าพื้นฐานของ **Mailer Function** ใน PHP เพื่อให้สามารถส่งอีเมลจาก Web Server ได้อย่างถูกต้อง</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5 d-flex justify-content-center gap-3">
+                        
+                        <a href="YOUR_LIVE_DEMO_URL" target="_blank" class="btn btn-lg btn-link-demo" style="border-radius: 25px; font-weight: 600;">
+                            <i class="fas fa-globe"></i> ดู Live Demo
                         </a>
+
+                        <a href="YOUR_GITHUB_URL" target="_blank" class="btn btn-lg btn-link-github" style="border-radius: 25px; font-weight: 600;">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+
+                        <a href="index.php#projects" class="btn btn-back btn-lg">
+                            <i class="fas fa-arrow-left"></i> กลับสู่ Portfolio
+                        </a>
+
                     </div>
 
                 </div>
@@ -259,19 +301,43 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        /* --- JavaScript สำหรับ Dark Mode (คัดลอกจากหน้าหลักมา) --- */
-        
-        // ตรวจสอบและใช้ธีมที่บันทึกไว้ใน localStorage
+        // --- JavaScript สำหรับ Dark Mode (ปรับปรุงเพื่อให้สลับปุ่มได้) ---
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
             const savedTheme = localStorage.getItem('theme');
-            
-            // ถ้ามีการบันทึก theme เป็น 'dark' ให้เปิด Dark Mode ทันที
+
+            // 1. ฟังก์ชันสลับธีม
+            function toggleTheme(isDark) {
+                if (isDark) {
+                    body.classList.add('dark-mode');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            // 2. ใช้ธีมที่บันทึกไว้
             if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
+                toggleTheme(true);
+            } else {
+                toggleTheme(false); 
+            }
+
+            // 3. เพิ่ม Event Listener ให้ปุ่ม
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const isDark = body.classList.contains('dark-mode');
+                    toggleTheme(!isDark); // สลับเป็นตรงข้าม
+                });
             }
         });
-        
     </script>
 </body>
 </html>
